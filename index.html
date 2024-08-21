@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Knowledge Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #007BFF;
+        }
+        #quizForm {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .question p {
+            font-size: 1.1em;
+            margin: 0;
+            padding: 10px 0;
+            border-bottom: 2px solid #007BFF;
+        }
+        .answer {
+            display: block;
+            margin: 5px 0;
+        }
+        .answer input[type="radio"] {
+            margin-right: 10px;
+        }
+        label {
+            cursor: pointer;
+            display: inline-block;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        label:hover {
+            background-color: #f0f0f0;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1>General Knowledge Quiz</h1>
+
+    <form id="quizForm">
+
+        <div class="question">
+            <p>1. What is the capital of France?</p>
+            <label class="answer"><input type="radio" name="q1" value="A"> A) Berlin</label><br>
+            <label class="answer"><input type="radio" name="q1" value="B"> B) Madrid</label><br>
+            <label class="answer"><input type="radio" name="q1" value="C"> C) Paris</label><br>
+            <label class="answer"><input type="radio" name="q1" value="D"> D) Rome</label>
+        </div>
+
+        <div class="question">
+            <p>2. Who wrote 'To Kill a Mockingbird'?</p>
+            <label class="answer"><input type="radio" name="q2" value="A"> A) Harper Lee</label><br>
+            <label class="answer"><input type="radio" name="q2" value="B"> B) Mark Twain</label><br>
+            <label class="answer"><input type="radio" name="q2" value="C"> C) Ernest Hemingway</label><br>
+            <label class="answer"><input type="radio" name="q2" value="D"> D) J.K. Rowling</label>
+        </div>
+
+        <div class="question">
+            <p>3. Grand Central Terminal, Park Avenue, New York is the world's?</p>
+            <label class="answer"><input type="radio" name="q3" value="A"> A) largest railway station</label><br>
+            <label class="answer"><input type="radio" name="q3" value="B"> B) highest railway station</label><br>
+            <label class="answer"><input type="radio" name="q3" value="C"> C) longest railway station</label><br>
+            <label class="answer"><input type="radio" name="q3" value="D"> D) None of the above</label>
+        </div>
+
+        <div class="question">
+            <p>4. Eritrea, which became the 182nd member of the UN in 1993, is in the continent of?</p>
+            <label class="answer"><input type="radio" name="q4" value="A"> A) Asia</label><br>
+            <label class="answer"><input type="radio" name="q4" value="B"> B) Africa</label><br>
+            <label class="answer"><input type="radio" name="q4" value="C"> C) Europe</label><br>
+            <label class="answer"><input type="radio" name="q4" value="D"> D) Australia</label>
+        </div>
+
+        <div class="question">
+            <p>5. Garampani sanctuary is located at?</p>
+            <label class="answer"><input type="radio" name="q5" value="A"> A) Junagarh, Gujarat</label><br>
+            <label class="answer"><input type="radio" name="q5" value="B"> B) Diphu, Assam</label><br>
+            <label class="answer"><input type="radio" name="q5" value="C"> C) Kohima, Nagaland</label><br>
+            <label class="answer"><input type="radio" name="q5" value="D"> D) Gangtok, Sikkim</label>
+        </div>
+
+        <div class="question">
+            <p>6. For which of the following disciplines is Nobel Prize awarded?</p>
+            <label class="answer"><input type="radio" name="q6" value="A"> A) Physics and Chemistry</label><br>
+            <label class="answer"><input type="radio" name="q6" value="B"> B) Physiology or Medicine</label><br>
+            <label class="answer"><input type="radio" name="q6" value="C"> C) Literature, Peace and Economics</label><br>
+            <label class="answer"><input type="radio" name="q6" value="D"> D) All of the above</label>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        const questions = [
+            {
+                text: "What is the capital of France?",
+                options: {
+                    A: "Berlin",
+                    B: "Madrid",
+                    C: "Paris",
+                    D: "Rome"
+                },
+                answer: "C"
+            },
+            {
+                text: "Who wrote 'To Kill a Mockingbird'?",
+                options: {
+                    A: "Harper Lee",
+                    B: "Mark Twain",
+                    C: "Ernest Hemingway",
+                    D: "J.K. Rowling"
+                },
+                answer: "A"
+            },
+            {
+                text: "Grand Central Terminal, Park Avenue, New York is the world's?",
+                options: {
+                    A: "largest railway station",
+                    B: "highest railway station",
+                    C: "longest railway station",
+                    D: "None of the above"
+                },
+                answer: "A"
+            },
+            {
+                text: "Eritrea, which became the 182nd member of the UN in 1993, is in the continent of?",
+                options: {
+                    A: "Asia",
+                    B: "Africa",
+                    C: "Europe",
+                    D: "Australia"
+                },
+                answer: "B"
+            },
+            {
+                text: "Garampani sanctuary is located at?",
+                options: {
+                    A: "Junagarh, Gujarat",
+                    B: "Diphu, Assam",
+                    C: "Kohima, Nagaland",
+                    D: "Gangtok, Sikkim"
+                },
+                answer: "B"
+            },
+            {
+                text: "For which of the following disciplines is Nobel Prize awarded?",
+                options: {
+                    A: "Physics and Chemistry",
+                    B: "Physiology or Medicine",
+                    C: "Literature, Peace and Economics",
+                    D: "All of the above"
+                },
+                answer: "D"
+            }
+        ];
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = questions.length;
+
+            for (let i = 0; i < totalQuestions; i++) {
+                let selectedAnswer = document.querySelector(`input[name="q${i + 1}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === questions[i].answer) {
+                    score++;
+                }
+            }
+
+            let resultText = `You scored ${score} out of ${totalQuestions}. `;
+            if (score === totalQuestions) {
+                resultText += "Perfect score!";
+            } else if (score > totalQuestions / 2) {
+                resultText += "Great job!";
+            } else {
+                resultText += "Better luck next time!";
+            }
+            document.getElementById("result").innerText = resultText;
+        }
+</script>
+</body>
+</html>
